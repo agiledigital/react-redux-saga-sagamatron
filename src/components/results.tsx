@@ -5,26 +5,61 @@ import {
   searchRepos,
   SearchReposState
 } from "~/state/github";
+import { makeStyles } from "@material-ui/styles";
+import {
+  Paper,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody
+} from "@material-ui/core";
 
 const mapStateToProps = ({ repos }: { readonly repos: SearchReposState }) => {
   return repos;
 };
 
-const Empty = () => <div>No Results</div>;
+// tslint:disable-next-line: no-any
+const useStyles = makeStyles(() => ({
+  root: {
+    width: "100%",
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: 650
+  }
+}));
+
+const Empty = () => <div></div>;
 
 const ResultsList = ({
   result
 }: {
   readonly result: GithubRepositoriesResponse;
-}) => (
-  <ul>
-    {result.items.map(repo => (
-      <ul key={repo.id}>
-        {repo.full_name}&nbsp;{repo.stargazers_count}
-      </ul>
-    ))}
-  </ul>
-);
+}) => {
+  const classes = useStyles({});
+
+  return (
+    <Paper className={classes.root}>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <TableCell>Repository</TableCell>
+            <TableCell>Stars</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {result.items.map(repo => (
+            <TableRow key={repo.id}>
+              <TableCell>{repo.full_name}</TableCell>
+              <TableCell>{repo.stargazers_count}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+};
 
 const Error = ({ error }: { readonly error: Error }) => (
   <div>{JSON.stringify(error)}</div>

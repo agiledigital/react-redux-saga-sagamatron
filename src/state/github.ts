@@ -70,23 +70,20 @@ const userApi = {
 };
 
 const actionTypes = {
-  searchRepos: ["SEARCH_REPOS", "SEARCH_REPOS_SUCCESS", "SEARCH_REPOS_FAILURE"]
+  searchRepos: [
+    "SEARCH_REPOS",
+    "SEARCH_REPOS_SUCCESS",
+    "SEARCH_REPOS_FAILURE",
+    "repos"
+  ]
 } as const;
 
 const {
-  searchRepos: [
-    searchRepos,
-    searchReposSuccess,
-    searchReposFailure,
-    searchReposReducer,
-    searchReposSaga
-  ]
+  actions: {
+    searchRepos: [searchRepos]
+  },
+  rootReducer,
+  rootSaga
 } = concoctBoilerplate(userApi, actionTypes, {});
 
-export {
-  searchRepos,
-  searchReposSuccess,
-  searchReposFailure,
-  searchReposReducer,
-  searchReposSaga
-};
+export { searchRepos, rootReducer, rootSaga };
