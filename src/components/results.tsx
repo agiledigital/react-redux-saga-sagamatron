@@ -6,29 +6,13 @@ import {
   TableHead,
   TableRow
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
 import * as React from "react";
 import { connect } from "react-redux";
-import {
-  GithubRepositoriesResponse,
-  searchRepos,
-  SearchReposState
-} from "~/state/github";
+import { GithubRepositoriesResponse, SearchReposState } from "~/state/github";
 
 const mapStateToProps = ({ repos }: { readonly repos: SearchReposState }) => {
   return repos;
 };
-
-// tslint:disable-next-line: no-any
-const useStyles = makeStyles(() => ({
-  root: {
-    width: "100%",
-    overflowX: "auto"
-  },
-  table: {
-    minWidth: 650
-  }
-}));
 
 const Empty = () => <div></div>;
 
@@ -36,30 +20,26 @@ const ResultsList = ({
   result
 }: {
   readonly result: GithubRepositoriesResponse;
-}) => {
-  const classes = useStyles({});
-
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Repository</TableCell>
-            <TableCell>Stars</TableCell>
+}) => (
+  <Paper>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Repository</TableCell>
+          <TableCell>Stars</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {result.items.map(repo => (
+          <TableRow key={repo.id}>
+            <TableCell>{repo.full_name}</TableCell>
+            <TableCell>{repo.stargazers_count}</TableCell>
           </TableRow>
-        </TableHead>
-        <TableBody>
-          {result.items.map(repo => (
-            <TableRow key={repo.id}>
-              <TableCell>{repo.full_name}</TableCell>
-              <TableCell>{repo.stargazers_count}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
-};
+        ))}
+      </TableBody>
+    </Table>
+  </Paper>
+);
 
 const Error = ({ error }: { readonly error: Error }) => (
   <div>{JSON.stringify(error)}</div>

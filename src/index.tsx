@@ -25,43 +25,24 @@ const store = createStore(
 // then run the saga
 sagaMiddleware.run(rootSaga);
 
-export const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    // tslint:disable-next-line: no-unsafe-any
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
+const Root = () => (
+  <div>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6">React Redux Saga Sagamatron 🧙🧙🧙</Typography>
+      </Toolbar>
+    </AppBar>
 
-const Root = () => {
-  const classes = useStyles({});
-
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            React Redux Saga Sagamatron 🧙🧙🧙
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
-      <Container maxWidth="md">
-        <Box paddingTop={5}>
-          <SearchBox />
-        </Box>
-        <Box paddingTop={5}>
-          <Results />
-        </Box>
-      </Container>
-    </div>
-  );
-};
+    <Container maxWidth="md">
+      <Box paddingTop={5}>
+        <SearchBox />
+      </Box>
+      <Box paddingTop={5}>
+        <Results />
+      </Box>
+    </Container>
+  </div>
+);
 
 ReactDOM.render(
   <Provider store={store}>
