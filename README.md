@@ -1,5 +1,7 @@
 # React Redux Saga SAGAMATRON Example
 
+[![CircleCI](https://circleci.com/gh/agiledigital/react-redux-saga-sagamatron.svg?style=svg)](https://circleci.com/gh/agiledigital/react-redux-saga-sagamatron)
+
 An example of taking the boilerplate out of your React/Redux/Saga stack using the magic of TypeScript! 🧙
 
 ## Summary
