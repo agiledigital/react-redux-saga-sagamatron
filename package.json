@@ -10,8 +10,10 @@
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
     "lint": "tslint -p tsconfig.json -c tslint.json",
+    "format-check": "prettier-check src/**/*",
     "type-coverage": "type-coverage --strict --detail --ignore-catch",
-    "format": "prettier --write '{src,test}/**/*.{ts,tsx}'"
+    "format": "prettier --write '{src,test}/**/*.{ts,tsx}'",
+    "test": "echo TODO"
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
@@ -20,6 +22,7 @@
     "@types/redux-saga": "^0.10.5",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.18.2",
+    "prettier-check": "^2.0.0",
     "redux-devtools-extension": "^2.13.8",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
@@ -39,5 +42,8 @@
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5",
     "sagamatron": "^2.0.1"
+  },
+  "typeCoverage": {
+    "atLeast": 98.94
   }
 }
