@@ -1,3 +1,12 @@
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 import * as React from "react";
 import { connect } from "react-redux";
 import {
@@ -5,15 +14,6 @@ import {
   searchRepos,
   SearchReposState
 } from "~/state/github";
-import { makeStyles } from "@material-ui/styles";
-import {
-  Paper,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody
-} from "@material-ui/core";
 
 const mapStateToProps = ({ repos }: { readonly repos: SearchReposState }) => {
   return repos;

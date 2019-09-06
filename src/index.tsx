@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+import { Box, makeStyles, Toolbar, Typography } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
 import { takeLatest } from "@redux-saga/core/effects";
@@ -11,7 +12,6 @@ import createSagaMiddleware, { SagaIterator } from "redux-saga";
 import { Results } from "~components/results";
 import { SearchBox } from "~components/search-box";
 import { rootReducer, rootSaga } from "~state/github";
-import { Typography, Toolbar, Box, makeStyles } from "@material-ui/core";
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
