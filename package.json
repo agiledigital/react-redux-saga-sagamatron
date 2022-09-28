@@ -13,7 +13,9 @@
     "format-check": "prettier-check src/**/*",
     "type-coverage": "type-coverage --strict --detail --ignore-catch",
     "format": "prettier --write '{src,test}/**/*.{ts,tsx}'",
-    "test": "echo TODO"
+    "test": "echo TODO",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
@@ -35,15 +37,17 @@
   "dependencies": {
     "@material-ui/core": "^4.4.0",
     "@types/react-redux": "^7.1.2",
-    "axios": "^0.21.1",
+    "axios": "^0.21.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5",
-    "sagamatron": "^2.0.1"
+    "sagamatron": "^2.0.1",
+    "@snyk/protect": "latest"
   },
   "typeCoverage": {
     "atLeast": 98.94
-  }
+  },
+  "snyk": true
 }
